@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Online Timetable | Government Degree College, Cheepurupalli</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; background: #f3f7f2; color: #173d3c; font-family: Arial, sans-serif; }
+    main { width: 100%; max-width: 510px; padding: 36px; background: #fff; border: 1px solid #d7e5dc; border-radius: 14px; box-shadow: 0 10px 35px #153d3210; }
+    .label { color: #166758; text-transform: uppercase; font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+    h1 { font-family: Georgia, serif; font-size: 30px; line-height: 1.25; margin: 14px 0; }
+    p { line-height: 1.65; color: #4b655e; }
+    a { display: inline-block; margin-top: 10px; padding: 13px 19px; color: #fff; background: #166758; border-radius: 7px; text-decoration: none; font-weight: 700; }
+    a:focus-visible { outline: 3px solid #d59d2d; outline-offset: 4px; }
+    small { display: block; margin-top: 24px; color: #61766e; line-height: 1.55; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="label">Government Degree College, Cheepurupalli</div>
+    <h1>Online class timetable</h1>
+    <p>Opening your timetable. If it does not open automatically, select the button below.</p>
+    <a id="open" href="https://script.google.com/macros/s/AKfycbxo_EIzlQ_sBPolsLD7vJEv2Urs_TMkskacJIoagzfPle3hzKgQEtQUZJ6GtRzp4MFH-Q/exec">Open timetable</a>
+    <small>Sign in with your registered college Google account when prompted.</small>
+  </main>
+  <script>
+    (() => {
+      const target = new URL(document.getElementById('open').href);
+      const incoming = new URLSearchParams(location.search);
+      for (const name of ['class', 'date']) {
+        if (incoming.has(name)) target.searchParams.set(name, incoming.get(name));
+      }
+      document.getElementById('open').href = target.href;
+      location.replace(target.href);
+    })();
+  </script>
+</body>
+</html>
